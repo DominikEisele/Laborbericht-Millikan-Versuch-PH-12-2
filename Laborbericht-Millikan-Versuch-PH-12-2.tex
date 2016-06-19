@@ -196,7 +196,9 @@
 
 \newpage
 \section{Messwerte}
-
+	Die 8 Messreihen sind in Tabelle \ref{tab:messwerte} zu sehen.\\
+	Dabei ist $n$ die Anzahl an übertretenen Skalensteilen, $t$ die dafür benötigte Zeit und $U$ die an den Kondensator angelegte
+	Spannung.
 
 	\begin{table}[h!]
 		\centering
@@ -219,27 +221,37 @@
 
 \newpage
 \section{Auswertung}
+	\subsection{Wertetabelle}
 
 	\begin{table}[h!]
 	\centering
 	\begin{tabular}{@{}lllll@{}}
 		\toprule
-		Weg in $m$	& $v_{0} \text{ in }\si{\meter\per\second}$	& r in $\si{\metre}$	& $F_{G} \text{ in }\si{\newton}$	& $q \text{ in }\si{\coulomb}$	\\ \midrule
-		\num{2.67E-4}	& \num{12.758E-5}				& \num{6.96E-7}		& \num{1.214E-14}			& \num{1.566E-19}		\\
-		\num{2.67E-4}	& \num{9.008E-5}				& \num{5.85E-7}		& \num{7.202E-15}			& \num{1.543E-19}		\\
-		\num{2.67E-4}	& \num{13.399E-5}				& \num{7.14E-7}		& \num{1.307E-14}			& \num{3.136E-19}		\\
-		\num{2.67E-4}	& \num{9.422E-5}				& \num{5.98E-7}		& \num{7.704E-15}			& \num{6.332E-19}		\\
-		\num{2.67E-4}	& \num{10.024E-5}				& \num{6.17E-7}		& \num{8.455E-15}			& \num{3.316E-19}		\\
-		\num{2.67E-4}	& \num{8.888E-5}				& \num{5.81E-7}		& \num{7.059E-15}			& \num{4.706E-19}		\\
-		\num{2.67E-4}	& \num{10.666E-5}				& \num{6.37E-7}		& \num{9.279E-15}			& \num{1.469E-19}		\\
-		\num{2.67E-4}	& \num{4.654E-5}				& \num{4.20E-7}		& \num{2.674E-15}			& \num{6.171E-19}		\\ \bottomrule
+		Weg in $m$		& $v_{0} \text{ in }\si{\meter\per\second}$	& r in $\si{\metre}$	& $F_{G} \text{ in }\si{\newton}$	& $q \text{ in }\si{\coulomb}$	\\ \midrule
+		\num{2.67E-4}	& \num{12.758E-5}						& \num{6.96E-7}		& \num{1.214E-14}				& \num{1.566E-19}			\\
+		\num{2.67E-4}	& \num{9.008E-5}							& \num{5.85E-7}		& \num{7.202E-15}				& \num{1.543E-19}			\\
+		\num{2.67E-4}	& \num{13.399E-5}						& \num{7.14E-7}		& \num{1.307E-14}				& \num{3.136E-19}			\\
+		\num{2.67E-4}	& \num{9.422E-5}							& \num{5.98E-7}		& \num{7.704E-15}				& \num{6.332E-19}			\\
+		\num{2.67E-4}	& \num{10.024E-5}						& \num{6.17E-7}		& \num{8.455E-15}				& \num{3.316E-19}			\\
+		\num{2.67E-4}	& \num{8.888E-5}							& \num{5.81E-7}		& \num{7.059E-15}				& \num{4.706E-19}			\\
+		\num{2.67E-4}	& \num{10.666E-5}						& \num{6.37E-7}		& \num{9.279E-15}				& \num{1.469E-19}			\\
+		\num{2.67E-4}	& \num{4.654E-5}							& \num{4.20E-7}		& \num{2.674E-15}				& \num{6.171E-19}			\\ \bottomrule
 		\end{tabular}
 	\caption{Berechnungen}
 	\label{tab:berechnungen}
 	\end{table}
 
+	In Tabelle \ref{tab:berechnungen} sind die, mit Hilfe der Daten aus Tabelle \ref{tab:messwerte}, berechneten Werte. Dafür wurden
+	folgende Formeln verwendet:
+	\begin{align*}
+		\text{Weg} &= n \cdot \SI{5.333e-5}{\meter}\\
+		v_{0} &= \frac{n \cdot \SI{5.333e-5}{\meter}}{t}\\
+		r &= \sqrt{\frac{9}{2} \cdot \frac{\eta \cdot n \cdot \SI{5.333e-5}{\meter}}{P_{"Ol} \cdot g}}\\
+		F_{G} &= m \cdot g\\
+		q &= \frac{9 \sqrt{2} \pi d}{U} \sqrt{\frac{2 \eta^3 v_0^3}{\left(\rho_{"Ol} \right) g}}
+	\end{align*}
 
-
+\newpage{Diagramm}
 
 \newpage
 \section{Quellen}
@@ -249,7 +261,6 @@
 			 eingereicht im Nov. 1910
 		\item \url{http://physics.nist.gov/cgi-bin/cuu/Value?e}, abgerufen am 19.06.2016
 	\end{itemize}
-
 
 
 \end{document}
