@@ -1,0 +1,216 @@
+\documentclass[a4paper,12pt,fleqn,oneside]{article}
+\usepackage{graphicx}
+\usepackage{etex}
+\usepackage[latin1]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{ae,aecompl}
+\usepackage[T1]{fontenc}
+\usepackage{ngerman}
+%\usepackage{fleqn}
+\usepackage{ulem}
+\usepackage{amssymb}
+\usepackage[locale=DE, per-mode=fraction, quotient-mode=fraction, group-minimum-digits=6]{siunitx}
+\usepackage{tabularx}
+\usepackage{bm}
+\usepackage{booktabs}
+\usepackage{color}
+\usepackage{pictex}
+\usepackage[left=2.5cm,right=2.5cm,top=2cm,bottom=2cm,includeheadfoot]{geometry}
+\usepackage[section]{placeins}
+\usepackage{xspace}
+\usepackage{multirow}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{esvect}
+\usepackage{pgfplots}
+\usepackage[ngerman]{babel}
+\usepackage {graphics}
+\usepackage {graphicx}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{autonum}
+
+
+\setlength{\headheight}{15pt}
+\pagestyle{fancy}
+\fancyfoot[C]{Seite \thepage{} von \pageref{LastPage}}
+\linespread{1.5}
+\author{Dominik Eisele}
+\title{Laborbericht}
+\date{\today}
+
+
+%\begingroup\makeatletter\ifx\SetFigFontNFSS\undefined%
+%\gdef\SetFigFontNFSS#1#2#3#4#5{%
+%  \reset@font\fontsize{#1}{#2pt}%
+%  \fontfamily{#3}\fontseries{#4}\fontshape{#5}%
+%  \selectfont}%
+%\fi\endgroup%
+
+
+% Zusätzliche Spalten mit variabler Breite fur tabularx
+%\newcolumntype{L}{>{\raggedright\arraybackslash}X} % linksbündig
+%\newcolumntype{C}{>{\centering\arraybackslash}X} % zentriert
+%\newcolumntype{R}{>{\raggedleft\arraybackslash}X} % rechtsbündig
+
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}} % linksbündig mit Breitenangabe
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}} % zentriert mit Breitenangabe
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}} % rechtsbündig mit Breitenangabe
+
+
+\setlength{\tabcolsep}{0pt}
+\renewcommand{\arraystretch}{1}
+
+
+%\renewcommand*\contentsname{Gliederung}
+
+
+\let\oldsqrt\sqrt
+\def\sqrt{\mathpalette\DHLhksqrt}
+\def\DHLhksqrt#1#2{\setbox0=\hbox{$#1\oldsqrt{#2\,}$}\dimen0=\ht0
+\advance\dimen0-0.3\ht0
+%0.3 ist das Maß für die Hakenlänge, relativ zum Inhalt der Wurzel
+\setbox2=\hbox{\vrule height\ht0 depth -\dimen0}%
+{\box0\lower0.4pt\box2}}
+
+
+
+\begin{document}
+
+\begin{titlepage}
+	\begin{flushleft}
+		\vspace*{2\baselineskip}
+		{\fontsize{16}{19.2}\selectfont Laborbericht Physik TGE12/2 A}\\[4\baselineskip]
+		\begin{tabularx}{\textwidth}{rp{5px}X}
+			{\fontsize{16}{19.2}\selectfont Titel:}&&{\fontsize{16}{19.2}\selectfont Millikan Versuch}
+		\end{tabularx}
+		\\[5\baselineskip]
+		\setlength{\tabcolsep}{0pt}
+		\renewcommand{\arraystretch}{1,25}
+		\begin{tabular}{lp{5px}l}
+			{\fontsize{14}{16.8}\selectfont Bearbeiter:}&&{\fontsize{14}{16.8}\selectfont Dominik Eisele{}}\\
+			{\fontsize{14}{16.8}\selectfont Mitarbeiter:}&&{\fontsize{14}{16.8}\selectfont}\\
+			{\fontsize{14}{16.8}\selectfont Datum Versuchsdurchführung:}&&{\fontsize{14}{16.8}\selectfont 11.04.2016}\\
+			{\fontsize{14}{16.8}\selectfont Datum Abgabe:}&&{\fontsize{14}{16.8}\selectfont 20.06.2016}
+		\end{tabular}
+		\\[2\baselineskip]
+		{\fontsize{14}{16.8}\selectfont Ich erkläre an Eides statt, den vorliegenden Laborbericht selbst angefertigt zu haben. Alle fremden Quellen wurden in diesem Laborbericht benannt.}
+		\\[2\baselineskip]
+		{\fontsize{14}{16.8}\selectfont Hochdorf, \today $  $ Dominik Eisele}
+	\end{flushleft}
+\end{titlepage}
+
+\setlength{\tabcolsep}{7pt}
+\renewcommand{\arraystretch}{1,7}
+
+\newpage
+\tableofcontents
+\newpage
+
+
+\section{Einführung}
+	Bei dem Versuch "`Elektrolytischer Trog"' ergibt sich der Verlauf der Feldlinien zwischen zwei Elektroden. Auf diesen Verlauf
+	kommt man, indem man zwischen einem Plattenkondensator, der sich in einem Elektrolyt befindet, Äquipotentiallinien(-flächen)
+	sucht und sich diese Verläufe notiert. Durch diese Äquipotentiallinien muss man jeweils eine Orthogonale einzeichnen, und
+	man erhält den Verlauf von Feldlinien in einem Plattenkondensator.\\
+	An den Elektroden wurde eine Wechselspannung  angelegt, da sich so keine Debye-Schicht (Elektrochemische 
+	Raumladungsdoppelschicht), wie bei einer Gleichspannung, ausbreiten konnte. Bei dieser Raumladungsdoppelschicht 
+	würde zusätzlich ca. \SI{1}{\volt} abfallen.
+
+\subsection{Formeln}
+	Betrag der elektrischen Feldstärke:
+	\[E=\frac{\text{Potentialdifferenz }\Delta\varphi}{\text{Abstand der Potentiallinien }\Delta s}\]
+
+\newpage
+\section{Material und Methoden}
+
+\subsection{Material}
+	Für den Versuch verwendete Materialien:
+	\begin{itemize}
+		\item 1 $\times$ Netzteil
+		\item 3 $\times$ Kabel
+		\item 1 $\times$ Spannungsmesser
+		\item 1 $\times$ Messspitze zur Spannungsmessung
+		\item 1 $\times$ Elektrolytischer Trog mit planen Elektroden
+		\item 1 $\times$ Metallring
+		\item Millimeterpapier
+	\end{itemize}
+
+\subsection{Aufbau}
+	Ein mit Wasser gefüllter elektrolytischer Trog wie er in Abbildung \ref{fig:skizze_elektrolytischer_trog} zu sehen ist, besteht aus
+	einer Kunststoffwanne, die an beiden Seiten jeweils eine plan liegende Elektrode besitzt. Diese Elektroden sind so platziert, dass
+	sie in das, als Elektrolyt verwendete, Leitungswasser hineinragen. An diese  Elektroden wurde eine Wechselspannung angelegt.
+	Außerdem wurde noch ein Multimeter installiert, sodass man mit einer Messspitze die Potentialdifferenz zwischen einer Elektrode
+	und einer beliebigen Stelle im Elektrolyt messen konnte.\\
+	In der zweiten Messreihe wurde noch ein Metallring in den elektrolytischen Trog gelegt, sodass das elektrische Feld durch ihn gestört
+	wird.
+	
+
+	
+%	\begin{figure}[H!]
+%		\centering
+%		\scalebox{.9}{\input{skizze_elektrolytischer_trog}}
+%		\caption{Skizze des Versuchsaufbaus}
+%		\label{fig:skizze_elektrolytischer_trog}
+%	\end{figure}
+
+\newpage
+\subsection{Durchführung}
+	Nachdem der Versuch aufgebaut wurde, wurden mit der Messspitze Äquipotentiallinien im elektrischen Feld gesucht. Diese 
+	Äquipotentiallinien wurden auf Millimeterpapier übertragen, die Spannung betrug hier dabei \SI{2}{\volt}, \SI{3}{\volt},
+	\SI{4}{\volt}, \SI{5}{\volt}, \SI{6}{\volt}, \SI{7}{\volt} und \SI{8}{\volt}.\\
+	Anschließend wurden die Magnetfeldlinien eingezeichnet und es wurde die Feldstärke $E$ für drei Punkte berechnet.
+	Der Versuch wurde daraufhin mit einem, sich im elektrolytischem Trog befindenden, Metallring wiederholt.
+
+
+\newpage
+\section{Messwerte}
+	In Abbildung \ref{fig:Diagramm1} sind die Messpunkte und die Äquipotentiallinien für \SI{2}{\volt} (schwarz), \SI{3}{\volt} (pink),
+	\SI{4}{\volt} (blau), \SI{5}{\volt} (hellgrün), \SI{6}{\volt} (rot), \SI{7}{\volt} (lila) und \SI{8}{\volt} (orange) eingezeichnet.
+	Dazu wurden außerdem die magnetischen Feldlinien (dunkelgrün) eingezeichnet, die zwischen den beiden Kondensatorplatten,
+	beim Anlegen einer Spannung, entstehen, und jeweils noch drei Punkte zur Berechnung der elektrischen Feldstärke $E$.\\
+	In Abbildung \ref{fig:Diagramm2} sind ebenfalls die Messpunkte, Äquipotentiallinien und Feldlinien eingezeichnet, die Farben entsprechen
+	den aus Abbildung \ref{fig:Diagramm1}. Hinzu kommt in Abbildung \ref{fig:Diagramm2} der Metallring, der im Inneren des Rings
+	eine Äquipotentialfläche besaß, deren Spannung \SI{4.3}{\volt} betrug. Der Metallring selbst ist ebenfalls eine Äquipotentiallinie,
+	dessen Spannung \SI{4.7}{\volt} betrug.
+			
+
+	
+%	\begin{figure}
+%		\input{messwerte1}
+%	\end{figure}
+%
+%	\begin{figure}
+%		\input{messwerte2}
+%	\end{figure}
+
+	
+
+\newpage
+\section{Auswertung}
+	\subsection{Betrag der elektrischen Feldstärke $E$}
+	Die benötigte Formel zu Berechnung der elektrischen Feldstärke $E$ lautet:
+	\[E=\frac{\text{Potentialdifferenz }\Delta\varphi}{\text{Abstand der Potentiallinien }\Delta s}\] 
+	Für den Abstand der Potentiallinie  wurde die Länge Feldlinien gemessen. 
+	
+	\subsubsection{Messreihe 1}
+	Punkt $P_1 \left(\num{1.8} \mid 2\right)$,  Punkt $P_2 \left(\num{5,5} \mid \num{4,4}\right)$, Punkt $P_3 \left(\num{9.6} \mid 8\right)$:
+		\[E_{P_1} = \frac{\SI{10}{\volt}}{\SI{0,11}{\metre}} = \SI{90,9091}{\volt \per \meter}\] 
+		\[E_{P_2} = \frac{\SI{10}{\volt}}{\SI{0.115}{\metre}} = \SI{86,9565}{\volt \per \meter}\]
+		\[E_{P_3} = \frac{\SI{10}{\volt}}{\SI{0.12}{\metre}} = \SI{83,3333}{\volt \per \meter}\]
+	
+
+	\subsubsection{Messreihe 2}
+	Punkt $P_1 \left(\num{1,3} \mid \num{5,5}\right)$,  Punkt $P_2 \left(\num{6.2} \mid \num{1,35}\right)$, Punkt $P_3 \left(\num{7.38} \mid \num{-2,05}\right)$:
+		\[E_{P_1} = \frac{\SI{10}{\volt}}{\SI{0,12}{\metre}} = \SI{83,3333}{\volt \per \meter}\] 
+		\[E_{P_2} = \frac{\SI{10}{\volt}}{\SI{0.11}{\metre}} = \SI{90,9091}{\volt \per \meter}\]
+		\[E_{P_3} = \frac{\SI{10}{\volt}}{\SI{0.11}{\metre}} = \SI{90,9091}{\volt \per \meter}\]
+
+	\subsection{Beobachtung zum Metallring}
+	Der in Messreihe 2 hinzugefügte Metallring besaß ein einheitliches Potential von  \SI{4,3}{\volt}. Diese einheitliches Potential
+	entsteht, da der Ring als Leiter keine Potentialdifferenz besitzt. Dadurch ist die Ringinnenfläche komplett von den beiden Elektroden abgeschirmt,
+	und es wirkt nur der Ring als Äquipotentiallinie auf das Ringinnere. Dadurch entsteht keine Potentialdifferenz im Ringinneren.
+
+\end{document}
