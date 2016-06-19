@@ -251,9 +251,61 @@
 		q &= \frac{9 \sqrt{2} \pi d}{U} \sqrt{\frac{2 \eta^3 v_0^3}{\left(\rho_{"Ol} \right) g}}
 	\end{align*}
 
-\newpage{Diagramm}
+\subsection{Diagramm}
+	\begin{figure}[h!]
+	\begin{tikzpicture}[xscale=1.2,yscale=1.2]
+		
 
+		\definecolor{cyan}{HTML}{0000FF}
+		\definecolor{pink}{HTML}{F52887}
+		\definecolor{green}{HTML}{00FF00}
+		\definecolor{purple}{HTML}{461B7E}
+		\definecolor{taupe}{HTML}{347235}
+		\definecolor{grey}{HTML}{B6B6B4}
+		\definecolor{red}{HTML}{FF0000}
+
+		
+		% Gitter
+		\foreach \x in {0.5,1.0,...,9} \draw[- ,grey ,thin] (\x,0) -- (\x,7);
+		\foreach \y in {0.5,1.0,...,7} \draw[- ,grey ,thin] (0.1,\y) -- (9,\y);
+		\foreach \x in {1.0,...,9} \draw[- ,black ,thin] (\x,0) -- (\x,7);
+		\foreach \y in {1,...,7} \draw[- ,black ,thin] (0,\y) -- (9,\y);
+		% Achsen
+		\draw[- ,thick] (0,0) -- (9,0) node[below right] {};
+		\draw[- ,thick] (0,0) -- (0,7) node[left] {};
+		% Achsbeschriftung
+		\foreach \x in {,1,...,9} \draw (\x,0.05) -- (\x,-0.05) node [below] {\x};
+		\foreach \y in {1,...,7} \draw (0.1,\y) -- (-0.1,\y) node [left] {$\y \cdot 10^{-19}$};
+		\draw (0,0) -- (0,0) node [below left] {0};
+		% Funktion
+		%\draw[red, samples=50, domain=1.000244714:7] plot (\x, {sqrt((2*1.37)/(sin(\x )*9.81))});
+		% Funktionbeschriftung
+		%\node (11) at (7 , 1.513887287) [below] {$t=\sqrt{\frac{2s}{\sin{(\alpha)}\cdot g}}$};	
+		% Messpunkte
+		
+		% 2V		
+			\node[red]  (11) at (1,1.566) {\textsf{X}};
+			\node[red]  (21) at (2,1.543) {\textsf{X}};
+			\node[red]  (31) at (3,3.136) {\textsf{X}};
+			\node[red]  (41) at (4,6.332) {\textsf{X}};
+			\node[red]  (51) at (5,3.316) {\textsf{X}};
+			\node[red]  (61) at (6,4.706) {\textsf{X}};
+			\node[red]  (71) at (7,1.469) {\textsf{X}};
+			\node[red]  (81) at (8,6.171) {\textsf{X}};
+			1,592
+			
+			%\draw [black] plot [smooth] coordinates {(0,6.8) (1.7,5) (2.15,3) (2.3,0) (2.1,3) (1.3,5) (0,6)};
+		
+	\end{tikzpicture}
+	\caption{Diagramm Ladung}
+	\label{fig:Diagramm}
+	\end{figure}
+	
+	In Diagramm \ref{fig:Diagramm} sind die Ladungen der Öltröpchen eingezeichnet. Die Messwerte stehen in keinem Zusammenhang
+	zueinander, ihre einzige Gemeinsamkeit ist, dass alle Ladungen ein vielfaches der Elementarladung $e$ sind.
 \newpage
+
+
 \section{Quellen}
 	\begin{itemize}
 		\item Millikan, R. A. (1911): The Isolation of an Ion, a Precision Measurement of its Charge, and the Correction of Stokes's
