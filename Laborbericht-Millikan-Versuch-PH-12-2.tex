@@ -25,11 +25,12 @@
 \usepackage{esvect}
 \usepackage{pgfplots}
 \usepackage[ngerman]{babel}
-\usepackage {graphics}
-\usepackage {graphicx}
+\usepackage{graphics}
+\usepackage{graphicx}
 \usepackage{tikz}
 \usepackage{amsmath}
-\usepackage{autonum}
+%\usepackage{autonum}
+\usepackage[hidelinks]{hyperref}
 
 
 \setlength{\headheight}{15pt}
@@ -49,15 +50,15 @@
 %\fi\endgroup%
 
 
-% Zusätzliche Spalten mit variabler Breite fur tabularx
-%\newcolumntype{L}{>{\raggedright\arraybackslash}X} % linksbündig
+% ZusÃ¤tzliche Spalten mit variabler Breite fur tabularx
+%\newcolumntype{L}{>{\raggedright\arraybackslash}X} % linksbÃ¼ndig
 %\newcolumntype{C}{>{\centering\arraybackslash}X} % zentriert
-%\newcolumntype{R}{>{\raggedleft\arraybackslash}X} % rechtsbündig
+%\newcolumntype{R}{>{\raggedleft\arraybackslash}X} % rechtsbÃ¼ndig
 
 
-\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}} % linksbündig mit Breitenangabe
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}} % linksbÃ¼ndig mit Breitenangabe
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}} % zentriert mit Breitenangabe
-\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}} % rechtsbündig mit Breitenangabe
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}} % rechtsbÃ¼ndig mit Breitenangabe
 
 
 \setlength{\tabcolsep}{0pt}
@@ -71,7 +72,7 @@
 \def\sqrt{\mathpalette\DHLhksqrt}
 \def\DHLhksqrt#1#2{\setbox0=\hbox{$#1\oldsqrt{#2\,}$}\dimen0=\ht0
 \advance\dimen0-0.3\ht0
-%0.3 ist das Maß für die Hakenlänge, relativ zum Inhalt der Wurzel
+%0.3 ist das MaÃŸ fÃ¼r die HakenlÃ¤nge, relativ zum Inhalt der Wurzel
 \setbox2=\hbox{\vrule height\ht0 depth -\dimen0}%
 {\box0\lower0.4pt\box2}}
 
@@ -92,11 +93,11 @@
 		\begin{tabular}{lp{5px}l}
 			{\fontsize{14}{16.8}\selectfont Bearbeiter:}&&{\fontsize{14}{16.8}\selectfont Dominik Eisele{}}\\
 			{\fontsize{14}{16.8}\selectfont Mitarbeiter:}&&{\fontsize{14}{16.8}\selectfont}\\
-			{\fontsize{14}{16.8}\selectfont Datum Versuchsdurchführung:}&&{\fontsize{14}{16.8}\selectfont 11.04.2016}\\
+			{\fontsize{14}{16.8}\selectfont Datum VersuchsdurchfÃ¼hrung:}&&{\fontsize{14}{16.8}\selectfont 11.04.2016}\\
 			{\fontsize{14}{16.8}\selectfont Datum Abgabe:}&&{\fontsize{14}{16.8}\selectfont 20.06.2016}
 		\end{tabular}
 		\\[2\baselineskip]
-		{\fontsize{14}{16.8}\selectfont Ich erkläre an Eides statt, den vorliegenden Laborbericht selbst angefertigt zu haben. Alle fremden Quellen wurden in diesem Laborbericht benannt.}
+		{\fontsize{14}{16.8}\selectfont Ich erklÃ¤re an Eides statt, den vorliegenden Laborbericht selbst angefertigt zu haben. Alle fremden Quellen wurden in diesem Laborbericht benannt.}
 		\\[2\baselineskip]
 		{\fontsize{14}{16.8}\selectfont Hochdorf, \today $  $ Dominik Eisele}
 	\end{flushleft}
@@ -110,107 +111,145 @@
 \newpage
 
 
-\section{Einführung}
-	Bei dem Versuch "`Elektrolytischer Trog"' ergibt sich der Verlauf der Feldlinien zwischen zwei Elektroden. Auf diesen Verlauf
-	kommt man, indem man zwischen einem Plattenkondensator, der sich in einem Elektrolyt befindet, Äquipotentiallinien(-flächen)
-	sucht und sich diese Verläufe notiert. Durch diese Äquipotentiallinien muss man jeweils eine Orthogonale einzeichnen, und
-	man erhält den Verlauf von Feldlinien in einem Plattenkondensator.\\
-	An den Elektroden wurde eine Wechselspannung  angelegt, da sich so keine Debye-Schicht (Elektrochemische 
-	Raumladungsdoppelschicht), wie bei einer Gleichspannung, ausbreiten konnte. Bei dieser Raumladungsdoppelschicht 
-	würde zusätzlich ca. \SI{1}{\volt} abfallen.
+\section{EinfÃ¼hrung}
+	Der Millikan Versuch wurde erstmals im Jahr 1910 von den beiden amerikanischen Physikern Robert Andrews Millikan und Harvey
+	Fletcher durchgefÃ¼hrt. Dabei gelang es den beiden Physikern die Elementarladung $e$ auf $e = \SI{1.592e-19}{\coulomb}$ zu
+	bestimmen. FÃ¼r diesen Versuch erhielt Millikan 1923 den Nobelpreis fÃ¼r Physik.\\
+	Der heutzutage gemessene Wert betrÃ¤gt $e = \SI{1.6021766208e-19}{\coulomb}$. Dieser Wert wird von der CODATA
+	(Committee on Data for Science and Technology) empfohlen, bestimmt wurde er mit Hilfe des Quanten-Hall-Effekts.
 
 \subsection{Formeln}
-	Betrag der elektrischen Feldstärke:
-	\[E=\frac{\text{Potentialdifferenz }\Delta\varphi}{\text{Abstand der Potentiallinien }\Delta s}\]
+	Schweben mit Elektrischem Feld:
+	\begin{align*}
+		\left|F_{EL}\right| &= \left|F_{G}\right|\\
+		q \cdot E &= m \cdot g
+	\end{align*}
+	Fallen ohne Elektrisches Feld:
+	\begin{align*}
+		\left|F_{R0}\right| &= \left|F_{G}\right|\\
+		6\pi \cdot \eta \cdot r \cdot v_{0} &= m \cdot g
+	\end{align*}
+	Daraus Folgt:
+	\begin{align*}
+		q = \frac{9 \sqrt{2} \pi d}{U} \sqrt{\frac{2 \eta^3 v_0^3}{\left(\rho_{"Ol} \right) g}}
+	\end{align*}
+	
 
 \newpage
 \section{Material und Methoden}
 
-\subsection{Material}
-	Für den Versuch verwendete Materialien:
-	\begin{itemize}
-		\item 1 $\times$ Netzteil
-		\item 3 $\times$ Kabel
-		\item 1 $\times$ Spannungsmesser
-		\item 1 $\times$ Messspitze zur Spannungsmessung
-		\item 1 $\times$ Elektrolytischer Trog mit planen Elektroden
-		\item 1 $\times$ Metallring
-		\item Millimeterpapier
-	\end{itemize}
+\subsection{Material} 
+	Der Versuch wurde mit Hilfe des Java-Applets von Carsten GroÃŸ durchgefÃ¼hrt. Dieses ist unter der Internetadresse
+	\url{http://ne.lo-net2.de/selbstlernmaterial/p/e/mi/java1/mi_java1.html} zu finden.
 
 \subsection{Aufbau}
-	Ein mit Wasser gefüllter elektrolytischer Trog wie er in Abbildung \ref{fig:skizze_elektrolytischer_trog} zu sehen ist, besteht aus
-	einer Kunststoffwanne, die an beiden Seiten jeweils eine plan liegende Elektrode besitzt. Diese Elektroden sind so platziert, dass
-	sie in das, als Elektrolyt verwendete, Leitungswasser hineinragen. An diese  Elektroden wurde eine Wechselspannung angelegt.
-	Außerdem wurde noch ein Multimeter installiert, sodass man mit einer Messspitze die Potentialdifferenz zwischen einer Elektrode
-	und einer beliebigen Stelle im Elektrolyt messen konnte.\\
-	In der zweiten Messreihe wurde noch ein Metallring in den elektrolytischen Trog gelegt, sodass das elektrische Feld durch ihn gestört
-	wird.
+	Der Aufbau des Versuchs ist in Abbilung \ref{fig:applet} zu sehen. Links ist der Ausschnitt eines Mikroskopes zu sehen, der von
+	gleichmÃ¤ÃŸig angeordneten Skalenstrichen durchzogen ist. Diese Skalenstriche dienen zur Messung der Strecke die die TrÃ¶pfchen
+	zurÃ¼cklegen und sind in einer Entfernung von jeweils \SI{5.333e-5}{\meter} angeordnet. Daraus kann man mit dem rechts davon
+	angebrachten Timer die Geschwindigkeit eines Teilchens bestimmen. Diesen Timer kann man durch unterschiedliche Methoden
+	starten. Die erste Variante ist das manuelle DrÃ¼cken eines Buttons, die zweite Variante ist der Start bei PolaritÃ¤tswechsel und die
+	dritte Variante ist der Start beim Spannungsabschalten. Die zu beobachtenten Ã–ltrÃ¶pfchen, mit einer zufÃ¤lligen Elementarladung,
+	kann man Ã¼ber den Button "`Pumpe"', von unten, in den Mikroskopausschnitt einbringen. Ãœber den Spannungswahlregler kann
+	man nun der, nach oben wirkenden Schwerkraft, entgegen wirken. Die gewÃ¤hlte Spannung liegt an zwei Kondensatorplatten an
+	(nicht sichtbar im Java-Applet), die parallel zu den Skalenstrichen, auserhalb des Mikroskopausschnittes platziert sind.
 	
-
-	
-%	\begin{figure}[H!]
-%		\centering
-%		\scalebox{.9}{\input{skizze_elektrolytischer_trog}}
-%		\caption{Skizze des Versuchsaufbaus}
-%		\label{fig:skizze_elektrolytischer_trog}
-%	\end{figure}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=\linewidth]{applet.jpeg}
+		\caption{Versuchsaufbau}
+		\label{fig:applet}
+	\end{figure}
 
 \newpage
-\subsection{Durchführung}
-	Nachdem der Versuch aufgebaut wurde, wurden mit der Messspitze Äquipotentiallinien im elektrischen Feld gesucht. Diese 
-	Äquipotentiallinien wurden auf Millimeterpapier übertragen, die Spannung betrug hier dabei \SI{2}{\volt}, \SI{3}{\volt},
-	\SI{4}{\volt}, \SI{5}{\volt}, \SI{6}{\volt}, \SI{7}{\volt} und \SI{8}{\volt}.\\
-	Anschließend wurden die Magnetfeldlinien eingezeichnet und es wurde die Feldstärke $E$ für drei Punkte berechnet.
-	Der Versuch wurde daraufhin mit einem, sich im elektrolytischem Trog befindenden, Metallring wiederholt.
+\subsection{DurchfÃ¼hrung}
+	Ãœber den Button "`Pumpe"' wurden Ã–ltrÃ¶pchen in den unteren Bereich des Ausschnittes des Mikroskops gegeben. AnschlieÃŸend
+	wurde die Triggerung auf "`Spannung aus"' gestellt, und ein Ã–ltrÃ¶pchen wurde auf einem Skalenstrich in der Schwebe gehalten.
+	Dann wurde die Spannung $U_{C}$ abgeschalten, sodass dass Ã–ltrÃ¶pchen ausschlieÃŸlich die Kraft $F_{G}$ erfÃ¤hrt. Nachdem das
+	TrÃ¶pchen nun Anzahl $n$ Skalenstriche passiert hat wurde die Zeitmessung gestopt. Ãœber diese beide Werte kann nun mit der
+	Formel $v_{0} = \frac{n \cdot \SI{5.333e-5}{\meter}}{t}$ die Geschwindigkeit $v_{0}$ berechnen. Setzt man die Geschwindigkeit
+	$v_{0}$ und die Spannung $U_{C}$ nun in die Gleichung $q = \frac{9 \sqrt{2} \pi d}{U} \sqrt{\frac{2 \eta^3 v_0^3}{\left(\rho_{"Ol} \right) g}}$
+	ein, so erhÃ¤lt man die Ladung $q$ des Ã–ltrÃ¶pchens.
+	
+\subsection{Herleitung der Formel fÃ¼r die Ladung}
+	\begin{align}
+		q \cdot E &= m \cdot g \label{eq:1}\\
+		6\pi \cdot \eta r v_{0} &= m \cdot g \label{eq:2} 
+	\end{align}	
+	In \eqref{eq:1} $m$ mit $m = P_{"Ol} \cdot \frac{4}{3} \pi r^{3}$ und $E$ mit $E = \frac{U}{d}$ ersetzen und nach $q$ auflÃ¶sen:
+	\begin{align}
+		q \cdot \frac{U}{d} &= P_{"Ol} \cdot \frac{4}{3} \pi r^{3} \label{eq:3} \\
+		q &=\frac{P_{"Ol} \cdot \frac{4}{3} \pi r^{3} d}{U} \label{eq:4} 
+	\end{align}
+	In \eqref{eq:2} $m$ mit $m = P_{"Ol} \cdot \frac{4}{3} \pi r^{3}$ ersetzen und nach $r$ auflÃ¶sen:
+	\begin{align}
+		6\pi \cdot \eta r v_{0} &= P_{"Ol} \cdot \frac{4}{3} \pi r^{3} g \label{eq:5} \\
+		r &= \sqrt{\frac{8 \cdot \eta  v_{0}}{P_{"Ol} \cdot g}}  \label{eq:6}
+	\end{align}
+	\eqref{eq:6} in \eqref{eq:4} einsetzen und umformen:
+	\begin{align}
+		q &=\frac{P_{"Ol} \cdot \frac{4}{3} \pi \sqrt{\frac{8 \cdot \eta  v_{0}}{P_{"Ol} \cdot g}}^{3} d}{U} \label{eq:7}\\
+		q &= \frac{9 \sqrt{2} \pi d}{U} \sqrt{\frac{2 \eta^3 v_0^3}{\left(\rho_{"Ol} \right) g}}  \label{eq:8}
+	\end{align}
+
+
 
 
 \newpage
 \section{Messwerte}
-	In Abbildung \ref{fig:Diagramm1} sind die Messpunkte und die Äquipotentiallinien für \SI{2}{\volt} (schwarz), \SI{3}{\volt} (pink),
-	\SI{4}{\volt} (blau), \SI{5}{\volt} (hellgrün), \SI{6}{\volt} (rot), \SI{7}{\volt} (lila) und \SI{8}{\volt} (orange) eingezeichnet.
-	Dazu wurden außerdem die magnetischen Feldlinien (dunkelgrün) eingezeichnet, die zwischen den beiden Kondensatorplatten,
-	beim Anlegen einer Spannung, entstehen, und jeweils noch drei Punkte zur Berechnung der elektrischen Feldstärke $E$.\\
-	In Abbildung \ref{fig:Diagramm2} sind ebenfalls die Messpunkte, Äquipotentiallinien und Feldlinien eingezeichnet, die Farben entsprechen
-	den aus Abbildung \ref{fig:Diagramm1}. Hinzu kommt in Abbildung \ref{fig:Diagramm2} der Metallring, der im Inneren des Rings
-	eine Äquipotentialfläche besaß, deren Spannung \SI{4.3}{\volt} betrug. Der Metallring selbst ist ebenfalls eine Äquipotentiallinie,
-	dessen Spannung \SI{4.7}{\volt} betrug.
-			
 
-	
-%	\begin{figure}
-%		\input{messwerte1}
-%	\end{figure}
-%
-%	\begin{figure}
-%		\input{messwerte2}
-%	\end{figure}
 
-	
+	\begin{table}[h!]
+		\centering
+		\begin{tabular}{@{}llll@{}}
+			\toprule
+			$n$		&	$t \text{ in }\si{\second}$	& $U \text{ in } \si{\volt}$	&	\\ \midrule
+			\num{5}	&	\num{2.09}				& \num{465.0}			&	\\
+			\num{5}	&	\num{2.96}				& \num{280.0}			&	\\
+			\num{5}	&	\num{1.99}				& \num{250.0}			&	\\
+			\num{5}	&	\num{2.83}				& \num{73.0}				&	\\
+			\num{5}	&	\num{2.66}				& \num{153.0}			&	\\
+			\num{5}	&	\num{3.00}				& \num{90.0}				&	\\
+			\num{5}	&	\num{2.50}				& \num{379.0}			&	\\
+			\num{5}	&	\num{5.73}				& \num{26.0}				&	\\ \bottomrule
+		\end{tabular}
+		\caption{Messwerte}
+		\label{tab:messwerte}
+	\end{table}
+
 
 \newpage
 \section{Auswertung}
-	\subsection{Betrag der elektrischen Feldstärke $E$}
-	Die benötigte Formel zu Berechnung der elektrischen Feldstärke $E$ lautet:
-	\[E=\frac{\text{Potentialdifferenz }\Delta\varphi}{\text{Abstand der Potentiallinien }\Delta s}\] 
-	Für den Abstand der Potentiallinie  wurde die Länge Feldlinien gemessen. 
-	
-	\subsubsection{Messreihe 1}
-	Punkt $P_1 \left(\num{1.8} \mid 2\right)$,  Punkt $P_2 \left(\num{5,5} \mid \num{4,4}\right)$, Punkt $P_3 \left(\num{9.6} \mid 8\right)$:
-		\[E_{P_1} = \frac{\SI{10}{\volt}}{\SI{0,11}{\metre}} = \SI{90,9091}{\volt \per \meter}\] 
-		\[E_{P_2} = \frac{\SI{10}{\volt}}{\SI{0.115}{\metre}} = \SI{86,9565}{\volt \per \meter}\]
-		\[E_{P_3} = \frac{\SI{10}{\volt}}{\SI{0.12}{\metre}} = \SI{83,3333}{\volt \per \meter}\]
-	
 
-	\subsubsection{Messreihe 2}
-	Punkt $P_1 \left(\num{1,3} \mid \num{5,5}\right)$,  Punkt $P_2 \left(\num{6.2} \mid \num{1,35}\right)$, Punkt $P_3 \left(\num{7.38} \mid \num{-2,05}\right)$:
-		\[E_{P_1} = \frac{\SI{10}{\volt}}{\SI{0,12}{\metre}} = \SI{83,3333}{\volt \per \meter}\] 
-		\[E_{P_2} = \frac{\SI{10}{\volt}}{\SI{0.11}{\metre}} = \SI{90,9091}{\volt \per \meter}\]
-		\[E_{P_3} = \frac{\SI{10}{\volt}}{\SI{0.11}{\metre}} = \SI{90,9091}{\volt \per \meter}\]
+	\begin{table}[h!]
+	\centering
+	\begin{tabular}{@{}lllll@{}}
+		\toprule
+		Weg in $m$	& $v_{0} \text{ in }\si{\meter\per\second}$	& r in $\si{\metre}$	& $F_{G} \text{ in }\si{\newton}$	& $q \text{ in }\si{\coulomb}$	\\ \midrule
+		\num{2.67E-4}	& \num{12.758E-5}				& \num{6.96E-7}		& \num{1.214E-14}			& \num{1.566E-19}		\\
+		\num{2.67E-4}	& \num{9.008E-5}				& \num{5.85E-7}		& \num{7.202E-15}			& \num{1.543E-19}		\\
+		\num{2.67E-4}	& \num{13.399E-5}				& \num{7.14E-7}		& \num{1.307E-14}			& \num{3.136E-19}		\\
+		\num{2.67E-4}	& \num{9.422E-5}				& \num{5.98E-7}		& \num{7.704E-15}			& \num{6.332E-19}		\\
+		\num{2.67E-4}	& \num{10.024E-5}				& \num{6.17E-7}		& \num{8.455E-15}			& \num{3.316E-19}		\\
+		\num{2.67E-4}	& \num{8.888E-5}				& \num{5.81E-7}		& \num{7.059E-15}			& \num{4.706E-19}		\\
+		\num{2.67E-4}	& \num{10.666E-5}				& \num{6.37E-7}		& \num{9.279E-15}			& \num{1.469E-19}		\\
+		\num{2.67E-4}	& \num{4.654E-5}				& \num{4.20E-7}		& \num{2.674E-15}			& \num{6.171E-19}		\\ \bottomrule
+		\end{tabular}
+	\caption{Berechnungen}
+	\label{tab:berechnungen}
+	\end{table}
 
-	\subsection{Beobachtung zum Metallring}
-	Der in Messreihe 2 hinzugefügte Metallring besaß ein einheitliches Potential von  \SI{4,3}{\volt}. Diese einheitliches Potential
-	entsteht, da der Ring als Leiter keine Potentialdifferenz besitzt. Dadurch ist die Ringinnenfläche komplett von den beiden Elektroden abgeschirmt,
-	und es wirkt nur der Ring als Äquipotentiallinie auf das Ringinnere. Dadurch entsteht keine Potentialdifferenz im Ringinneren.
+
+
+
+\newpage
+\section{Quellen}
+	\begin{itemize}
+		\item Millikan, R. A. (1911): The Isolation of an Ion, a Precision Measurement of its Charge, and the Correction of Stokes's
+			 Law in: Physical Review (Series 1) Vol. 32, Issue 4, April 1911, S. 349-397 (doi:10.1103/PhysRevSeriesI.32.349),
+			 eingereicht im Nov. 1910
+		\item \url{http://physics.nist.gov/cgi-bin/cuu/Value?e}, abgerufen am 19.06.2016
+	\end{itemize}
+
+
 
 \end{document}
